@@ -1,20 +1,11 @@
-class Colors {
-    public mainColor: string;
-    public borderColor: string;
-    public titleColor: string;
-    public textColor: string;
-    public backgroundColor: string;
-    public progressColor: string;
+class Palette {
+    public palette: BannerColorPalette;
 
-    public setMainColor(value: string): this;
-    public setBorderColor(value: string): this;
-    public setTitleColor(value: string): this;
-    public setTextColor(value: string): this;
-    public setBackgroundColor(value: string): this;
-    public setProgressColor(value: string): this;
+    public setPalette(paletteNum: number): this;
+    public changePalette(palette: Partial<BannerColorPalette>): this;
 }
 
-export interface Banner {
+export interface BannerData {
     width: number;
     height: number;
     base: {
@@ -60,12 +51,24 @@ export interface Banner {
     };
 }
 
+export interface BannerColorPalette {
+    mainColor: string;
+    borderColor: string;
+    usernameTextColor: string;
+    levelTextColor: string;
+    xpTextColor: string;
+    backgroundColor: string;
+    progressColor: string;
+}
+
+export type BannerTypes = "rank";
+
 export interface BannerBuilderOptions {
-    type?: "rank";
+    type?: BannerTypes;
     variant?: number;
 }
 
-export default class BannerBuilder extends Colors {
+export default class BannerBuilder extends Palette {
     constructor(options?: BannerBuilderOptions);
 
     public username: string;
