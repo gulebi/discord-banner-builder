@@ -17,8 +17,12 @@
     "author": "Gulebi",
     "repository": {
         "type": "git",
-        "url": "git://github.com/Gulebi/banners.git"
+        "url": "git://github.com/Gulebi/discord-banner-builder.git"
     },
+    "bugs": {
+        "url": "https://github.com/Gulebi/discord-banner-builder/issues"
+    },
+    "homepage": "https://github.com/Gulebi/discord-banner-builder#readme",
     "license": "MIT",
     "devDependencies": {
         "discord.js": "^14.9.0",

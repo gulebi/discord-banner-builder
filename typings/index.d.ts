@@ -60,8 +60,13 @@ export interface Banner {
     };
 }
 
+export interface BannerBuilderOptions {
+    type?: "rank";
+    variant?: number;
+}
+
 export default class BannerBuilder extends Colors {
-    constructor(type?: "rank", variant?: number);
+    constructor(options?: BannerBuilderOptions);
 
     public username: string;
     public avatar: string | Buffer;

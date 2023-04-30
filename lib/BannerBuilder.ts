@@ -12,11 +12,11 @@ export default class BannerBuilder extends Colors {
 
     public banner: Banner;
 
-    constructor(type?: "rank", variant?: number) {
+    constructor({ type, variant }: { type?: "rank"; variant?: number }) {
         super();
         this.username = "Guleb#2437";
         this.avatar =
-            "https://cdn.discordapp.com/avatars/546703392081313793/72b2ce83bdc7fe06cb011c5684d6e536.png?size=512";
+            "https://cdn.discordapp.com/attachments/845152870403407885/1102074474624471181/default-avatar.png";
         this.level = 1;
         this.currentXP = 667;
         this.maxXP = 865;

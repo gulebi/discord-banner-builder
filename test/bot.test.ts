@@ -14,7 +14,7 @@ client.once(Events.ClientReady, (c) => {
 client.on(Events.MessageCreate, async (message) => {
     if (message.author.bot) return;
 
-    const banner = await new BannerBuilder()
+    const banner = await new BannerBuilder({ type: "rank", variant: 0 })
         .setUsername(message.author.tag)
         .setCurrentXP(360)
         .setMaxXP(1350)

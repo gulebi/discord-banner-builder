@@ -23,7 +23,7 @@ import BannerBuilder from "discord-banner-builder";
 Example of Discord bot using discord-banner-builder library:
 
 ```ts
-import { Client, Events, GatewayIntentBits } from "discord.js";
+import { AttachmentBuilder, Client, Events, GatewayIntentBits } from "discord.js";
 import BannerBuilder from "discord-banner-builder";
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -34,11 +34,11 @@ client.once(Events.ClientReady, (c) => {
 client.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
-    const banner = await new BannerBuilder()
-        .setUsername(message.author.tag)
+    const banner = await new BannerBuilder({ type: "rank", variant: 0 })
+        .setUsername(interaction.author.tag)
         .setMaxXP(500)
         .setCurrentXP(360)
-        .setAvatar(message.author.avatarURL()!)
+        .setAvatar(interaction.author.avatarURL()!)
         .toAttachment();
 
     if (interaction.commandName === "ping") {
