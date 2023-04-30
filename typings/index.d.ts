@@ -2,7 +2,7 @@ class Palette {
     public palette: BannerColorPalette;
 
     public setPalette(paletteNum: number): this;
-    public changePalette(palette: Partial<BannerColorPalette>): this;
+    public changePalette(newPalette: Partial<BannerColorPalette>): this;
 }
 
 export interface BannerData {
@@ -51,14 +51,16 @@ export interface BannerData {
     };
 }
 
+export type Color = `#${string}` | `rgb(${number}, ${number}, ${number})`;
+
 export interface BannerColorPalette {
-    mainColor: string;
-    borderColor: string;
-    usernameTextColor: string;
-    levelTextColor: string;
-    xpTextColor: string;
-    backgroundColor: string;
-    progressColor: string;
+    mainColor: Color;
+    borderColor: Color;
+    usernameTextColor: Color;
+    levelTextColor: Color;
+    xpTextColor: Color;
+    backgroundColor: Color;
+    progressColor: Color;
 }
 
 export type BannerTypes = "rank";

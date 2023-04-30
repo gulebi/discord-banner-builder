@@ -16,8 +16,8 @@ export default class Palette {
         return this;
     }
 
-    public changePalette(palette: Partial<BannerColorPalette>): this {
-        this.palette = { ...this.palette, ...palette };
+    public changePalette(newPalette: Partial<BannerColorPalette>): this {
+        this.palette = { ...this.palette, ...newPalette };
         return this;
     }
 }

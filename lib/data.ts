@@ -1,4 +1,4 @@
-import { BannerColorPalette, BannerData } from "../typings";
+import { BannerColorPalette, BannerData, BannerTypes } from "../typings";
 
 export const palettes: BannerColorPalette[] = [
     {
@@ -12,7 +12,7 @@ export const palettes: BannerColorPalette[] = [
     },
 ];
 
-export const banners: Record<"rank", BannerData[]> = {
+export const banners: Record<BannerTypes, BannerData[]> = {
     rank: [
         {
             width: 1080,
