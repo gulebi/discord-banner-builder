@@ -1,0 +1,31 @@
+{
+    "name": "discord-banner-builder",
+    "version": "0.0.1",
+    "description": "Library for creating Discord banners",
+    "main": "index.ts",
+    "types": "./typings/index.d.ts",
+    "scripts": {
+        "test": "nodemon ./test/bot.test.ts"
+    },
+    "keywords": [
+        "discord.js",
+        "discord",
+        "banners",
+        "canvas",
+        "rank"
+    ],
+    "author": "Gulebi",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Gulebi/banners.git"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "discord.js": "^14.9.0",
+        "dotenv": "^16.0.3",
+        "nodemon": "^2.0.22"
+    },
+    "dependencies": {
+        "@napi-rs/canvas": "^0.1.40"
+    }
+}
