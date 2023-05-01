@@ -30,7 +30,7 @@ Example of Discord bot using discord-banner-builder library:
 
 ```js
 const { AttachmentBuilder, Client, Events, GatewayIntentBits } = require("discord.js");
-const { BannerBuilder } = require("discord-banner-builder");
+const { BannerBuilder, BannerTemplateTypes } = require("discord-banner-builder");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -41,7 +41,7 @@ client.once(Events.ClientReady, (c) => {
 client.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
-    const banner = await new BannerBuilder({ type: "rank", variant: 0 })
+    const banner = await new BannerBuilder({ type: BannerTemplateTypes.rank })
         .setUsername(interaction.author.tag)
         .setMaxXP(500)
         .setCurrentXP(360)

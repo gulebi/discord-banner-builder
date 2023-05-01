@@ -44,9 +44,16 @@ export interface BannerData {
     };
 }
 
+export interface BannerTemplate {
+    name: string;
+    variantNum: number;
+    palette: string;
+    bannerData: BannerData;
+}
+
 export type Color = `#${string}` | `rgb(${number}, ${number}, ${number})`;
 
-export interface BannerColorPalette {
+export interface PaletteData {
     mainColor: Color;
     borderColor: Color;
     usernameTextColor: Color;
@@ -56,9 +63,17 @@ export interface BannerColorPalette {
     progressColor: Color;
 }
 
-export type BannerTypes = "rank";
+export interface BannerColorPalette {
+    name: string;
+    paletteNum: number;
+    paletteData: PaletteData;
+}
+
+export enum BannerTemplateTypes {
+    "rank" = "rank",
+}
 
 export interface BannerBuilderOptions {
-    type?: BannerTypes;
+    type?: BannerTemplateTypes;
     variant?: number;
 }

@@ -1,15 +1,19 @@
 {
     "name": "discord-banner-builder",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Library for creating Discord banners",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
     "files": [
-        "dist"
+        "dist",
+        "assets",
+        "data"
     ],
     "scripts": {
-        "build": "tsup src/index.ts --format cjs,esm --dts"
+        "build": "tsup",
+        "test:ts": "nodemon ./test/bot.test.ts",
+        "test:js": "nodemon ./test/bot.test.js"
     },
     "keywords": [
         "discord.js",

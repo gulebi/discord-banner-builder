@@ -1,0 +1,50 @@
+{
+    "name": "different-text",
+    "variantNum": 1,
+    "palette": "default",
+    "bannerData": {
+        "width": 1080,
+        "height": 360,
+        "base": {
+            "borderWidth": 15,
+            "borderRadius": 20
+        },
+        "avatar": {
+            "placeholder": {
+                "x": 189,
+                "y": 180,
+                "radius": 117
+            },
+            "image": {
+                "dx": 72,
+                "dy": 63,
+                "dw": 234,
+                "dh": 234
+            }
+        },
+        "progress": {
+            "x": 347,
+            "y": 262,
+            "w": 661,
+            "h": 50,
+            "radii": 25
+        },
+        "texts": {
+            "username": {
+                "x": 367,
+                "y": 134,
+                "align": "left"
+            },
+            "level": {
+                "x": 367,
+                "y": 211,
+                "align": "left"
+            },
+            "xp": {
+                "x": 988,
+                "y": 211,
+                "align": "right"
+            }
+        }
+    }
+}

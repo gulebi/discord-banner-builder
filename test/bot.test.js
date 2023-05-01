@@ -1,5 +1,5 @@
 const { AttachmentBuilder, Client, Events, GatewayIntentBits } = require("discord.js");
-const { BannerBuilder } = require("../dist");
+const { BannerBuilder, BannerTemplateTypes } = require("../dist");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -14,7 +14,7 @@ client.once(Events.ClientReady, (c) => {
 client.on(Events.MessageCreate, async (message) => {
     if (message.author.bot) return;
 
-    const banner = await new BannerBuilder({ type: "rank", variant: 0 })
+    const banner = await new BannerBuilder({ type: BannerTemplateTypes.rank })
         .setUsername(message.author.tag)
         .setCurrentXP(360)
         .setMaxXP(1350)

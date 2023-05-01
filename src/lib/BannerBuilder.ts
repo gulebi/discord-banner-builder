@@ -1,8 +1,7 @@
 import { createCanvas, loadImage } from "@napi-rs/canvas";
-import { convertNum, getSafeIndex } from "./utils";
+import { convertNum, getTemplateSync } from "./utils";
 import Palette from "./Palette";
-import { BannerData, BannerTypes } from "../types";
-import { banners } from "./data";
+import { BannerTemplateTypes, BannerData } from "../types";
 
 export class BannerBuilder extends Palette {
     public username: string;
@@ -11,9 +10,9 @@ export class BannerBuilder extends Palette {
     public currentXP: number;
     public maxXP: number;
 
-    public banner: BannerData;
+    public bannerData: BannerData;
 
-    constructor({ type, variant }: { type?: BannerTypes; variant?: number }) {
+    constructor({ type, name }: { type?: BannerTemplateTypes; name?: string }) {
         super();
         this.username = "Guleb#2437";
         this.avatar =
@@ -22,10 +21,7 @@ export class BannerBuilder extends Palette {
         this.currentXP = 667;
         this.maxXP = 865;
 
-        type = type || "rank";
-        variant = getSafeIndex(variant, banners[type]);
-
-        this.banner = banners[type][variant];
+        this.bannerData = getTemplateSync(type || BannerTemplateTypes.rank, name || "default").bannerData;
     }
 
     public setUsername(username: string): this {
@@ -54,25 +50,25 @@ export class BannerBuilder extends Palette {
     }
 
     public async toAttachment(): Promise<Buffer> {
-        const canvas = createCanvas(this.banner.width, this.banner.height);
+        const canvas = createCanvas(this.bannerData.width, this.bannerData.height);
         const ctx = canvas.getContext("2d");
 
-        ctx.fillStyle = this.palette.mainColor;
-        ctx.strokeStyle = this.palette.borderColor;
-        ctx.lineWidth = this.banner.base.borderWidth;
+        ctx.fillStyle = this.paletteData.mainColor;
+        ctx.strokeStyle = this.paletteData.borderColor;
+        ctx.lineWidth = this.bannerData.base.borderWidth;
         ctx.beginPath();
         // @ts-ignore
-        ctx.roundRect(0, 0, canvas.width, canvas.height, this.banner.base.borderRadius);
+        ctx.roundRect(0, 0, canvas.width, canvas.height, this.bannerData.base.borderRadius); // fix
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
 
-        const { image: avatarImg, placeholder: avatarPh } = this.banner.avatar;
+        const { image: avatarImg, placeholder: avatarPh } = this.bannerData.avatar;
 
         const avatar = await loadImage(this.avatar);
 
         ctx.save();
-        ctx.fillStyle = this.palette.backgroundColor;
+        ctx.fillStyle = this.paletteData.backgroundColor;
         ctx.beginPath();
         ctx.arc(avatarPh.x, avatarPh.y, avatarPh.radius, 0, Math.PI * 2, false);
         ctx.closePath();
@@ -81,35 +77,35 @@ export class BannerBuilder extends Palette {
         ctx.drawImage(avatar, avatarImg.dx, avatarImg.dy, avatarImg.dw, avatarImg.dh);
         ctx.restore();
 
-        const progress = this.banner.progress;
+        const progress = this.bannerData.progress;
 
-        ctx.fillStyle = this.palette.backgroundColor;
+        ctx.fillStyle = this.paletteData.backgroundColor;
         ctx.beginPath();
         // @ts-ignore
-        ctx.roundRect(progress.x, progress.y, progress.w, progress.h, progress.radii);
+        ctx.roundRect(progress.x, progress.y, progress.w, progress.h, progress.radii); // fix
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = this.palette.progressColor;
+        ctx.fillStyle = this.paletteData.progressColor;
         ctx.beginPath();
         // @ts-ignore
-        ctx.roundRect(progress.x, progress.y, progress.w * (this.currentXP / this.maxXP), progress.h, progress.radii);
+        ctx.roundRect(progress.x, progress.y, progress.w * (this.currentXP / this.maxXP), progress.h, progress.radii); // fix
         ctx.closePath();
         ctx.fill();
 
-        const texts = this.banner.texts;
+        const texts = this.bannerData.texts;
 
         ctx.textBaseline = "top";
         ctx.textAlign = texts.username.align;
-        ctx.fillStyle = this.palette.usernameTextColor;
+        ctx.fillStyle = this.paletteData.usernameTextColor;
         ctx.font = '48px "Roboto-Bold"';
         ctx.fillText(this.username, texts.username.x, texts.username.y);
 
         ctx.font = '36px "Roboto-Regular"';
-        ctx.fillStyle = this.palette.levelTextColor;
+        ctx.fillStyle = this.paletteData.levelTextColor;
         ctx.textAlign = texts.level.align;
         ctx.fillText(`Level: ${this.level}`, texts.level.x, texts.level.y);
-        ctx.fillStyle = this.palette.xpTextColor;
+        ctx.fillStyle = this.paletteData.xpTextColor;
         ctx.textAlign = texts.xp.align;
         ctx.fillText(`XP: ${convertNum(this.currentXP)} / ${convertNum(this.maxXP)}`, texts.xp.x, texts.xp.y);
 

@@ -1,23 +1,20 @@
-import { BannerColorPalette } from "../types";
-import { palettes } from "./data";
-import { getSafeIndex } from "./utils";
+import { PaletteData } from "../types";
+import { getPaletteSync } from "./utils";
 
 export default class Palette {
-    public palette: BannerColorPalette;
+    public paletteData: PaletteData;
 
     constructor() {
-        this.palette = palettes[0];
+        this.paletteData = getPaletteSync("default").paletteData;
     }
 
-    public setPalette(paletteNum: number): this {
-        paletteNum = getSafeIndex(paletteNum, palettes);
-        this.palette = palettes[paletteNum];
-
+    public setPalette(paletteName: string): this {
+        this.paletteData = getPaletteSync(paletteName).paletteData;
         return this;
     }
 
-    public changePalette(newPalette: Partial<BannerColorPalette>): this {
-        this.palette = { ...this.palette, ...newPalette };
+    public changePalette(newPalette: Partial<PaletteData>): this {
+        this.paletteData = { ...this.paletteData, ...newPalette };
         return this;
     }
 }

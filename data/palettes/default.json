@@ -1,0 +1,13 @@
+{
+    "name": "default",
+    "paletteNum": 0,
+    "paletteData": {
+        "mainColor": "#003566",
+        "borderColor": "#001D3D",
+        "usernameTextColor": "#FFC300",
+        "levelTextColor": "#FB8500",
+        "xpTextColor": "#FB8500",
+        "backgroundColor": "#2C333A",
+        "progressColor": "#0B2545"
+    }
+}
