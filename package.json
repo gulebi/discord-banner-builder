@@ -2,10 +2,14 @@
     "name": "discord-banner-builder",
     "version": "0.0.1",
     "description": "Library for creating Discord banners",
-    "main": "index.ts",
-    "types": "./typings/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
-        "test": "nodemon ./test/bot.test.ts"
+        "build": "tsup src/index.ts --format cjs,esm --dts"
     },
     "keywords": [
         "discord.js",
@@ -25,9 +29,12 @@
     "homepage": "https://github.com/Gulebi/discord-banner-builder#readme",
     "license": "MIT",
     "devDependencies": {
+        "@types/node": "^18.16.3",
         "discord.js": "^14.9.0",
         "dotenv": "^16.0.3",
-        "nodemon": "^2.0.22"
+        "nodemon": "^2.0.22",
+        "tsup": "^6.7.0",
+        "typescript": "^5.0.4"
     },
     "dependencies": {
         "@napi-rs/canvas": "^0.1.40"

@@ -1,4 +1,4 @@
-import { BannerColorPalette, BannerData, BannerTypes } from "../typings";
+import { BannerColorPalette, BannerData, BannerTypes } from "../types";
 
 export const palettes: BannerColorPalette[] = [
     {

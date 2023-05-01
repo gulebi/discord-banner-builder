@@ -1,6 +1,6 @@
-import { AttachmentBuilder, Client, Events, GatewayIntentBits } from "discord.js";
-import { BannerBuilder } from "../dist";
-import dotenv from "dotenv";
+const { AttachmentBuilder, Client, Events, GatewayIntentBits } = require("discord.js");
+const { BannerBuilder } = require("../dist");
+const dotenv = require("dotenv");
 dotenv.config();
 
 const client = new Client({
@@ -18,7 +18,7 @@ client.on(Events.MessageCreate, async (message) => {
         .setUsername(message.author.tag)
         .setCurrentXP(360)
         .setMaxXP(1350)
-        .setAvatar(`${message.author.avatarURL()!}?size=512`)
+        .setAvatar(`${message.author.avatarURL()}?size=512`)
         .toAttachment();
 
     if (message.content === "!rank") {

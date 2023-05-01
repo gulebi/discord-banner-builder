@@ -1,10 +1,3 @@
-class Palette {
-    public palette: BannerColorPalette;
-
-    public setPalette(paletteNum: number): this;
-    public changePalette(newPalette: Partial<BannerColorPalette>): this;
-}
-
 export interface BannerData {
     width: number;
     height: number;
@@ -68,22 +61,4 @@ export type BannerTypes = "rank";
 export interface BannerBuilderOptions {
     type?: BannerTypes;
     variant?: number;
-}
-
-export default class BannerBuilder extends Palette {
-    constructor(options?: BannerBuilderOptions);
-
-    public username: string;
-    public avatar: string | Buffer;
-    public level: number;
-    public currentXP: number;
-    public maxXP: number;
-
-    public setUsername(username: string): this;
-    public setAvatar(avatar: string | Buffer): this;
-    public setLevel(level: number): this;
-    public setCurrentXP(currentXP: number): this;
-    public setMaxXP(maxXP: number): this;
-    public setPalette(paletteNum: number): this;
-    public toAttachment(): Promise<Buffer>;
 }

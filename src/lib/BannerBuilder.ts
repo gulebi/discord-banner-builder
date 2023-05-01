@@ -1,10 +1,10 @@
 import { createCanvas, loadImage } from "@napi-rs/canvas";
 import { convertNum, getSafeIndex } from "./utils";
 import Palette from "./Palette";
-import { BannerData, BannerTypes } from "../typings";
+import { BannerData, BannerTypes } from "../types";
 import { banners } from "./data";
 
-export default class BannerBuilder extends Palette {
+export class BannerBuilder extends Palette {
     public username: string;
     public avatar: string | Buffer;
     public level: number;

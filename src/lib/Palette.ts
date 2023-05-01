@@ -1,4 +1,4 @@
-import { BannerColorPalette } from "../typings";
+import { BannerColorPalette } from "../types";
 import { palettes } from "./data";
 import { getSafeIndex } from "./utils";
 
