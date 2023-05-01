@@ -1,6 +1,6 @@
 {
     "name": "discord-banner-builder",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Library for creating Discord banners",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",

@@ -15,7 +15,13 @@ npm install discord-banner-builder
 It can then be loaded as an ES Module:
 
 ```ts
-import BannerBuilder from "discord-banner-builder";
+import { BannerBuilder } from "discord-banner-builder";
+```
+
+Or as a CommonJS module:
+
+```js
+const { BannerBuilder } = require("discord-banner-builder");
 ```
 
 ## Example usage
